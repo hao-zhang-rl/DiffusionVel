@@ -1,0 +1,1 @@
+/home/haozhang/work/Diffraction_Difusion/training_datasets/field_data.npy	/home/haozhang/work/Diffraction_Difusion/training_datasets/field_data.npy

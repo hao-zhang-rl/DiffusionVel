@@ -1,0 +1,6 @@
+/home/haozhang/work/dataset/flat_fault_b/FlatFault_B/seis6_1_16.npy	/home/haozhang/work/dataset/flat_fault_b/FlatFault_B/vel6_1_16.npy
+/home/haozhang/work/dataset/flat_fault_b/FlatFault_B/seis7_1_16.npy	/home/haozhang/work/dataset/flat_fault_b/FlatFault_B/vel7_1_16.npy
+/home/haozhang/work/dataset/flat_fault_b/FlatFault_B/seis8_1_16.npy	/home/haozhang/work/dataset/flat_fault_b/FlatFault_B/vel8_1_16.npy
+/home/haozhang/work/dataset/flat_fault_b/FlatFault_B/seis6_1_17.npy	/home/haozhang/work/dataset/flat_fault_b/FlatFault_B/vel6_1_17.npy
+/home/haozhang/work/dataset/flat_fault_b/FlatFault_B/seis7_1_17.npy	/home/haozhang/work/dataset/flat_fault_b/FlatFault_B/vel7_1_17.npy
+/home/haozhang/work/dataset/flat_fault_b/FlatFault_B/seis8_1_17.npy	/home/haozhang/work/dataset/flat_fault_b/FlatFault_B/vel8_1_17.npy

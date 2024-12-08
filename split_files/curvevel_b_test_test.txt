@@ -1,0 +1,1 @@
+/home/haozhang/work/dataset/curve_vel_b/data/data50.npy	/home/haozhang/work/dataset/curve_vel_b/model/model50.npy

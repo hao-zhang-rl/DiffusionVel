@@ -1,0 +1,2 @@
+/home/haozhang/work/dataset/flat_vel_b/data/data49.npy	/home/haozhang/work/dataset/flat_vel_b/model/model49.npy
+/home/haozhang/work/dataset/flat_vel_b/data/data50.npy	/home/haozhang/work/dataset/flat_vel_b/model/model50.npy

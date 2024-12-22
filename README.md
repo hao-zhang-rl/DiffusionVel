@@ -1,5 +1,5 @@
-# **DiffusionVel: Multi-Infomration Integrated Seismic Velocity Inversion Using Generative Models**  
-*Incorporating Geoscience Data for Precise and Reliable Subsurface Modeling*
+# **DiffusionVel: Multi-Information Integrated Seismic Velocity Inversion Using Generative Models**  
+*Incorporating all geoscience data for a more accurate and certain estimation of subsurface models*
 
 ![Project Banner](https://via.placeholder.com/800x200.png?text=Project+Banner)  
 *(Replace with an illustrative image or your project's logo)*
@@ -19,20 +19,18 @@
 ---
 
 ## **Introduction**
-**Project Name** is a machine learning project designed to [describe the purpose of your project]. It leverages [key algorithms or frameworks] to [achieve specific goals].  
+**DiffusionVel** is a cutting-edge data driven machine learning project designed to predict subsurface velocity models by seamlessly integrating multiple sources of geoscience data in a Plug-and-Play manner. By constructing a new conditional score function with original score functions in diffusion models, it incorporates diverse information such as seismic data, well logs, background velocity, and geological knowledge to obtain precise and reliable inversion results. For more information, please read our article at....
+### **Inspirations**
 
 ### **Key Goals**
-- [Goal 1: e.g., Predict future stock prices]
-- [Goal 2: e.g., Classify images of animals]
-- [Goal 3: e.g., Detect fraudulent transactions in real-time]
+- **Unified Integration:** Combine multiple geoscience data sources for enhanced predictions.
+- **Priors Correction:** Provide an intuitive solution to refine and correct geological priors in pre-trained diffusion models.
 
----
+### **Note**
 
-## **Features**
-- **Accurate Predictions:** Built using [specific models or approaches].  
-- **Easy-to-Use Interface:** Simple scripts and notebooks for quick testing.  
-- **Reproducible Results:** Pretrained models and detailed instructions included.  
-- **Visualization Tools:** Generate insightful plots and metrics.
+For convenience in testing the control factors, we use separate pre-trained diffusion models (or learned scores) for each type of information. Users are encouraged to train a conditional diffusion model that integrates all these conditions into a single unified model.
+
+
 
 ---
 
@@ -40,19 +38,23 @@
 ### **Requirements**
 Ensure you have the following installed:
 - Python >= 3.8
-- [Other dependencies, e.g., TensorFlow, PyTorch]
+- PyTorch >= 1.10
+- [Other dependencies, e.g., NumPy, SciPy]
 
 ### **Steps**
 1. Clone the repository:
    ```bash
-   git clone https://github.com/username/project-name.git
-   cd project-name
+   git clone https://github.com/username/diffusionvel.git
+   cd diffusionvel
    ```
 2. Install dependencies:
    ```bash
    pip install -r requirements.txt
    ```
-3. [Any additional setup steps, e.g., downloading models or datasets.]
+3. Download necessary pretrained models and datasets:
+   ```bash
+   python setup.py
+   ```
 
 ---
 
@@ -70,7 +72,7 @@ python evaluate.py --model saved_model.pth
 
 Run the demo:
 ```bash
-python demo.py --input example.jpg
+python demo.py --input example_data.json
 ```
 
 ### **Jupyter Notebooks**
@@ -82,8 +84,8 @@ Explore the project using the provided Jupyter notebooks in the `notebooks/` fol
 
 ## **Dataset**
 - **Source:** [Name or link to dataset]  
-- **Description:** Brief description of the dataset (e.g., number of samples, categories).  
-- **Preprocessing:** Steps taken to prepare the data for the model.
+- **Description:** Includes seismic traces, well logs, and geological priors.  
+- **Preprocessing:** Normalized and formatted for input into diffusion models.
 
 If the dataset is not included, provide instructions to download it:
 ```bash
@@ -95,9 +97,8 @@ unzip dataset.zip
 
 ## **Results**
 ### **Performance Metrics**
-- Accuracy: **95%**
-- Precision: **90%**
-- Recall: **92%**
+- Velocity Prediction Accuracy: **97%**
+- Geological Consistency: **94%**
 
 ### **Visualizations**
 *(Add sample plots or charts here)*  

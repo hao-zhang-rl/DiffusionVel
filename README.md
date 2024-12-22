@@ -1,5 +1,5 @@
 # **DiffusionVel: Multi-Information Integrated Seismic Velocity Inversion Using Generative Models**  
-*Incorporating all geoscience data for a more accurate and certain estimation of subsurface models*
+*Incorporating geoscience data for a more accurate and certain estimation of subsurface models*
 
 ![Project Banner](https://via.placeholder.com/800x200.png?text=Project+Banner)  
 *(Replace with an illustrative image or your project's logo)*

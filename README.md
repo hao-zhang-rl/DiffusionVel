@@ -34,11 +34,7 @@ For convenience in testing the control factors, we use separate pre-trained diff
 
 ---
 
-## **Installation**
-### **Requirements**
-
-
-
+## **Preparation**
 
 ### **Steps**
 1. Clone the repository:
@@ -50,90 +46,34 @@ For convenience in testing the control factors, we use separate pre-trained diff
 Install the project's dependencies using the following command:  
 *(This is for CUDA Version 11.5. Please adapt to your specific requirements to ensure the project runs correctly.)*  
 ```bash
-conda create --env -n DiffusionVel
+conda create --name DiffusionVel
+conda activate DiffusionVel
 pip install -r requirements.txt
-3. Download necessary pretrained models and datasets:
+```
+
+
+3. Download necessary datasets:
 Most of the datasets used in this project are sourced from **OpenFWI**. For our final tests, we independently prepared the geological distribution of velocity models for the **Hess Model**.  The datasets provided by OpenFWI are formatted as supervised training datasets: seismic data paired with velocity models. A whole realease of these datasets and details can be found at [OpenFWI Website](#).  
 
-The geological prior of Hess model used in this project can be found at [Geological Prior Link](#). This distribution contains only velocity models. If you need seismic data simulations corresponding to these velocity models, we recommend using the **DeepWave Python Package**, available at [DeepWave Website](#), for convenient simulation.  
+The geological prior of Hess model used in this project can be found at [Geological Prior Link](#). This distribution contains only velocity models. If you need seismic data simulations corresponding to these velocity models, we recommend using the **DeepWave Python Package**, available at [DeepWave Website](#), for convenient simulation.
+4. Download Pre-trained Checkpoints:
+We encourage users to train their own models to test the remarkable results of multi-information integration. However, for a quick start, users can download the pre-trained checkpoints to run the scripts of our project smoothly. We prepare for users both the training scrip and test script to directly apply the pre-trained models.
 
+We provide five types of checkpoints, each corresponding to a specific generative diffusion model (GDM):
 
+Seismic-data GDM
+Well-log GDM
+Background velocity GDM
+Geological-oriented GDM
+These checkpoints were trained on the CurveFault-B dataset and are referenced in the examples section of our paper.
 ---
 
 ## **Usage**
-### **Run Scripts**
-Train the model:
+### **Train Your Own Diffusion Models**
+1. Seismic Data GDM
 ```bash
 python train.py --config config.yaml
-```
 
-Evaluate the model:
-```bash
-python evaluate.py --model saved_model.pth
-```
-
-Run the demo:
-```bash
-python demo.py --input example_data.json
-```
-
-### **Jupyter Notebooks**
-Explore the project using the provided Jupyter notebooks in the `notebooks/` folder:
-- `notebooks/data_analysis.ipynb`: Data exploration and preprocessing.
-- `notebooks/model_training.ipynb`: Model training and evaluation.
-
----
-
-## **Dataset**
-- **Source:** [Name or link to dataset]  
-- **Description:** Includes seismic traces, well logs, and geological priors.  
-- **Preprocessing:** Normalized and formatted for input into diffusion models.
-
-If the dataset is not included, provide instructions to download it:
-```bash
-wget http://example.com/dataset.zip
-unzip dataset.zip
-```
-
----
-
-## **Results**
-### **Performance Metrics**
-- Velocity Prediction Accuracy: **97%**
-- Geological Consistency: **94%**
-
-### **Visualizations**
-*(Add sample plots or charts here)*  
-![Sample Chart](https://via.placeholder.com/600x300.png)
-
-### **Model Outputs**
-*(Showcase predictions or results)*  
-Example input:  
-![Example Input](https://via.placeholder.com/300x300.png)  
-
-Predicted output:  
-![Example Output](https://via.placeholder.com/300x300.png)
-
----
-
-## **Contributing**
-Contributions are welcome! Please follow these steps to contribute:
-1. Fork the repository.
-2. Create a new branch:
-   ```bash
-   git checkout -b feature-name
-   ```
-3. Commit your changes and push the branch:
-   ```bash
-   git push origin feature-name
-   ```
-4. Submit a pull request.
-
----
-
-## **License**
-This project is licensed under the [MIT License](LICENSE).  
-Feel free to use, modify, and distribute this project as per the license terms.
 
 ---
 

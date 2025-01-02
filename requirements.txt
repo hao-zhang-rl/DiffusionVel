@@ -8,7 +8,7 @@ open_clip_torch==2.0.2
 opencv_contrib_python==4.3.0.36
 opencv_python==4.10.0.84
 opencv_python_headless==4.10.0.84
-Pillow==11.0.0
+Pillow==11.1.0
 python_ternary==1.0.8
 pytorch_lightning==1.5.0
 safetensors==0.2.7
@@ -20,4 +20,4 @@ torch==1.12.1
 torchvision==0.13.1
 tqdm==4.66.5
 transformers==4.19.2
-xformers==0.0.28.post3
+xformers==0.0.29.post1

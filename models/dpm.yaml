@@ -2,17 +2,17 @@ model:
   target: ldm.models.diffusion.ddpm.DDPM
   params:
     save_dir: "/home/haozhang/work/"
-    log_every_t: 5
+    log_every_t: 1
     timesteps: 1000
     first_stage_key: "vel"
-    cond_stage_key: ["well"]
+    cond_stage_key: [back]
     image_size: [70,70]
     channels: 1
     use_ema: False
     parameterization: "x0"
-    conditioning_key: "seis_well_back_concat"
+    conditioning_key: "back_concat"
     if_ddim: Fasle
-    ddim_steps: 20
+    ddim_steps: 200
     beta_schedule: "cosine"
     eta: 0
     factor_0: 0.25

@@ -16,9 +16,9 @@ def generate_well_log(data):
     Returns:
         np.ndarray: Data with well logs inserted.
     """
-    logs = 8  # Number of maximum well log points (adjustable)
+    #logs = random.randint(1,8)  # Number of maximum well log points (adjustable)
     well_log = np.zeros_like(data)  # Initialize zero array of the same shape
-    known_indices = np.random.choice(data.shape[2], logs, replace=False)  # Predefined indices for well logs
+    known_indices =[0,24,48,69] #np.random.choice(data.shape[2], logs, replace=False)  # Predefined indices for well logs
     well_log[..., known_indices] = data[..., known_indices]  # Copy values at selected indices
     return well_log
 
@@ -51,7 +51,10 @@ class FWIDataset(Dataset):
 
         # Read annotation file and load batches
         with open(anno, 'r') as f:
-            self.batches = f.readlines()[:lines]
+            if lines==0:
+                self.batches = f.readlines()
+            else:
+                self.batches = f.readlines()[:lines]               
 
         # Preload data and labels if specified
         if preload:
@@ -74,7 +77,7 @@ class FWIDataset(Dataset):
         """
         batch_parts = batch.strip().split('\t')
         data_path, label_path = batch_parts[0], batch_parts[1]
-
+        
         data = np.load(data_path).astype('float32') if 'seis' in self.conditioning_key else None
         label = np.load(label_path).astype('float32') if len(batch_parts) > 1 else None
 
@@ -109,7 +112,7 @@ class FWIDataset(Dataset):
         if 'well' in self.conditioning_key:
             output['well'] = generate_well_log(label)
         if 'back' in self.conditioning_key:
-            nx, std = random.randint(5,65), random.randint(5,65)  # Gaussian blur parameters
+            nx, std = 45,5#random.randint(5,65), random.randint(5,65)  # Gaussian blur parameters
             if nx % 2==0:
                 nx=nx+1
                 std=std+1

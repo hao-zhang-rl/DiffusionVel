@@ -103,7 +103,7 @@ class DDPM(pl.LightningModule):
 
         # Configurations
         self.cond_stage_model = None
-        all_config = self.initialize_configs(seis_config, well_config, geo_config, back_config)
+        self.all_config = self.initialize_configs(seis_config, well_config, geo_config, back_config)
         
         self.loss_type=loss_type
         
@@ -121,12 +121,12 @@ class DDPM(pl.LightningModule):
         self.save_dir=save_dir
 
         # Model wrapper
-        self.model = DiffusionWrapper(conditioning_key, all_config)
+        self.model = DiffusionWrapper(self.conditioning_key, self.all_config)
         self.if_ddim = if_ddim
         self.eta=eta
         self.ddim_steps = ddim_steps
         count_params(self.model, verbose=True)
-
+        
         # EMA (Exponential Moving Average)
         self.use_ema = use_ema
         if self.use_ema:
@@ -186,7 +186,11 @@ class DDPM(pl.LightningModule):
         return all_config
 
 
-
+    def update_key(self, conditioning_key,cond_stage_key):
+            self.conditioning_key = conditioning_key
+            self.cond_stage_key=cond_stage_key
+            self.model = DiffusionWrapper(self.conditioning_key, self.all_config)  
+        
     def register_schedule(self, given_betas=None, beta_schedule="linear", timesteps=1000,
                           linear_start=1e-4, linear_end=2e-2, cosine_s=8e-3):
         if exists(given_betas):
@@ -322,6 +326,7 @@ class DDPM(pl.LightningModule):
             print(f"Missing Keys:\n {missing}")
         if len(unexpected) > 0:
             print(f"\nUnexpected Keys:\n {unexpected}")
+
 
     def q_mean_variance(self, x_start, t):
         """
@@ -504,8 +509,7 @@ class DDPM(pl.LightningModule):
     def get_input(self, batch, k):
         
         x = batch[k]
-        if self.conditioning_key=="geo":
-            x=None        
+
         if len(x.shape) == 3:
             x = x[..., None]
       
@@ -525,8 +529,7 @@ class DDPM(pl.LightningModule):
         for c_s_k in self.cond_stage_key:
   
           c[c_s_k]=self.get_input(batch, c_s_k)
-          if random.randint(0,5)==0:       
-            c[c_s_k]=torch.zeros_like(c[c_s_k])      
+             
         
         loss, loss_dict = self(x,c)
         return loss, loss_dict
@@ -576,6 +579,7 @@ class DDPM(pl.LightningModule):
     def log_local(self, images, batch_idx):
 
         root = os.path.join(self.save_dir, "image_log_val")
+        
         for k in images:
 
 
@@ -614,24 +618,32 @@ class DDPM(pl.LightningModule):
     @torch.no_grad()
     def log_images(self, batch, N=2000, n_row=2, sample=True, return_keys=None, **kwargs):
         log = dict()
-        c = {}
-        if self.conditioning_key is None:
-            c = None  # No conditioning        
-        # Get conditions for all keys
-        for c_s_k in self.cond_stage_key:
-            c[c_s_k] = self.get_input(batch, c_s_k).to(self.device)[:N]
-            
         # Get input image
         x = self.get_input(batch, self.first_stage_key).to(self.device)
         N = min(x.shape[0], N)
         n_row = min(x.shape[0], n_row)
         x = x[:N]
-        c = {k: v[:N] for k, v in c.items()}
-        
+
+        c = {}
+
+        if not self.cond_stage_key :
+
+            c = None  # No conditioning        
+        else:
+
+            for c_s_k in self.cond_stage_key:
+          
+                if c_s_k != 'geo':
+                    c[c_s_k] = self.get_input(batch, c_s_k).to(self.device)[:N]
+                else:
+                    c[c_s_k] = None
+                if c_s_k not in ["seis", 'geo'] :
+                    
+                    log[c_s_k]=c[c_s_k]  
+
         log["inputs"] = x
-        for c_s_k in self.cond_stage_key:
-            if c_s_k != "seis":
-              log[c_s_k]=c[c_s_k]    
+        
+             
         # Diffusion row
         diffusion_row = []
         x_start = x[:n_row]
@@ -690,7 +702,6 @@ class DiffusionWrapper(pl.LightningModule):
         super().__init__()
 
         self.conditioning_key = conditioning_key
-
         # Conditional model instantiations based on the conditioning key
         if 'seis' in self.conditioning_key:
             self.diffusion_model_seis = instantiate_from_config(all_config["seis_config"])
@@ -705,6 +716,8 @@ class DiffusionWrapper(pl.LightningModule):
             self.diffusion_model_back = instantiate_from_config(all_config["back_config"])
 
     def forward(self, x, t, c):
+        
+        
         """
         Forward pass through the model, using the conditioning input and the time step.
 
@@ -720,9 +733,11 @@ class DiffusionWrapper(pl.LightningModule):
 
         # Process each conditioning model if the corresponding key is present in the conditioning_key
         if 'seis' in self.conditioning_key:
+      
             out.append(self.diffusion_model_seis(c["seis"], x, t))
 
         if 'well' in self.conditioning_key:
+
             xc = torch.cat([x, c["well"]], dim=1)
             out.append(self.diffusion_model_well(xc, t))
 
@@ -730,7 +745,9 @@ class DiffusionWrapper(pl.LightningModule):
             out.append(self.diffusion_model_geo(x, t))
 
         if 'back' in self.conditioning_key:
-            xc = torch.cat([x, c["back"]], dim=1)
+            
+    
+            xc = torch.cat([x, c["back"]], dim=1)       
             out.append(self.diffusion_model_back(xc, t))
 
         return out

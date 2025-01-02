@@ -1,7 +1,5 @@
 import os
 import torch
-
-from omegaconf import OmegaConf
 from ldm.util import instantiate_from_config
 
 
@@ -21,8 +19,8 @@ def load_state_dict(ckpt_path, location='cpu'):
     return state_dict
 
 
-def create_model(config_path):
-    config = OmegaConf.load(config_path)
+
+
+def create_model(config):
     model = instantiate_from_config(config.model).cpu()
-    print(f'Loaded model config from [{config_path}]')
     return model

@@ -2,7 +2,7 @@
 ### ***Incorporating geoscience data for a more accurate and certain estimation of subsurface models***  
 
 <p align="center">
-  <img src="./Multiple%20information.png" alt="Overview" title="An Overview of DiffusionVel" style="width:100%; border: 1px solid #ccc; padding: 5px;"/>
+  <img src="./github_images/Multiple%20information.png" alt="Overview" title="An Overview of DiffusionVel" style="width:100%; border: 1px solid #ccc; padding: 5px;"/>
 </p>
 <p align="center">
   <em>Figure 1: An Overview of DiffusionVel.</em>
@@ -58,21 +58,21 @@ Install the project's dependencies using the following command:
     ```
     
 <p align="center">
-  <img src="./datasets_examples_vel.png" alt="Overview" title="OpenFWI Datasets" style="width:80%; border: 1px solid #ccc; padding: 5px;"/>
+  <img src="./github_images/datasets_examples_vel.png" alt="Overview" title="OpenFWI Datasets" style="width:80%; border: 1px solid #ccc; padding: 5px;"/>
 </p>
 <p align="center">
-  <em>Figure 3: Examples of velocity models in OpenFWI datasets .</em>
+  <em>Figure 2: Examples of velocity models in OpenFWI datasets .</em>
 </p>
 <p align="center">
-  <img src="./datasets_examples_data_page_1.png" alt="Overview" title="OpenFWI Datasets" style="width:80%; border: 1px solid #ccc; padding: 5px;"/>
+  <img src="./github_images/datasets_examples_data_page_1.png" alt="Overview" title="OpenFWI Datasets" style="width:80%; border: 1px solid #ccc; padding: 5px;"/>
 </p>
 <p align="center">
-  <em>Figure 4: Examples of seismic data in OpenFWI datasets .</em>
+  <em>Figure 3: Examples of seismic data in OpenFWI datasets .</em>
 </p>
 
 
 3. **Download necessary datasets:**
-Most of the datasets used in this project are sourced from **OpenFWI** (please see [OpenFWI Collection](https://github.com/lanl/OpenFWI) and [OpenFWI Datasets](https://openfwi-lanl.github.io/docs/data.html#vel)). For our final tests, we independently prepared the geological distribution of velocity models for the **Hess Model**. As shown in Figure 3 and Figure 4, the datasets provided by OpenFWI are formatted as supervised training datasets: seismic data paired with velocity models. A whole realease of these datasets and details can be found at [OpenFWI Datasets](https://openfwi-lanl.github.io/docs/data.html#vel). The geological prior of Hess model used in this project can be found at [Geological Prior Link](#). This distribution contains only velocity models. If you need seismic data simulations corresponding to these velocity models, we recommend using the **DeepWave Python Package**, available at [DeepWave](https://github.com/ar4/deepwave), for convenient simulation.
+Most of the datasets used in this project are sourced from **OpenFWI** (please see [OpenFWI Collection](https://github.com/lanl/OpenFWI) and [OpenFWI Datasets](https://openfwi-lanl.github.io/docs/data.html#vel)). For our final tests, we independently prepared the geological distribution of velocity models for the **Hess Model**. As shown in Figure 2 and Figure 3, the datasets provided by OpenFWI are formatted as supervised training datasets: seismic data paired with velocity models. A whole realease of these datasets and details can be found at [OpenFWI Datasets](https://openfwi-lanl.github.io/docs/data.html#vel). The geological prior of Hess model used in this project can be found at [Geological Prior Link](#). This distribution contains only velocity models. If you need seismic data simulations corresponding to these velocity models, we recommend using the **DeepWave Python Package**, available at [DeepWave](https://github.com/ar4/deepwave), for convenient simulation.
 
 4. **Download Pre-trained Checkpoints (optional):**  
    We encourage users to train their own models to test the remarkable results of multi-information integration. However, for a quick start, users can download the pre-trained checkpoints to run the scripts of our project smoothly.
@@ -114,33 +114,33 @@ If you have downloaded the checkpoints, ensure they are placed in the appropriat
 
 ## **Results**
 <p align="center">
-  <img src="./datasets_part1_replot_page_1.png" alt="Overview" title="" style="width:60%; border: 1px solid #ccc; padding: 5px;"/>
+  <img src="./github_images/datasets_part1_replot_page_1.png" alt="Overview" title="" style="width:60%; border: 1px solid #ccc; padding: 5px;"/>
 </p>
 <p align="center">
-  <em>Figure 5: Inversion resutls of DiffusionVel using only seismic data, with comparasion with exsisting methods.</em>
+  <em>Figure 4: Inversion resutls of DiffusionVel using only seismic data, with comparasion with exsisting methods.</em>
 </p>
-Figure 5 shows the inversion results of DiffusionVel using only seismic data, compared with existing methods: Conventional FWI, InversionNet, and VelocityGAN.
+Figure 4 shows the inversion results of DiffusionVel using only seismic data, compared with existing methods: Conventional FWI, InversionNet, and VelocityGAN.
 <p align="center">
-  <img src="./comparison_with_residuals.gif" alt="Overview" title="Generation Process of DiffusionVel With Multi-Information Integration" style="width:100%; border: 1px solid #ccc; padding: 5px;"/>
+  <img src="./github_images/comparison_with_residuals.gif" alt="Overview" title="Generation Process of DiffusionVel With Multi-Information Integration" style="width:100%; border: 1px solid #ccc; padding: 5px;"/>
 </p>
 <p align="justify">
-  <em>Figure 6: Generation Process (predicted x_0) of DiffusionVel With Multi-Information Integration of Seismic Data, Well Logs and Background Velocity.</em>
+  <em>Figure 5: Generation Process (predicted x_0) of DiffusionVel With Multi-Information Integration of Seismic Data, Well Logs and Background Velocity.</em>
 </p>
-Figure 6 shows the generation process of DiffusionVel With Multi-Information Integration (Here we use 200 DDIM sampling steps for better demonstration. Usually 10 timesteps will be enough for good generation.) Figure 7 displays the integration results of correct geological priors. 
+Figure 5 shows the generation process of DiffusionVel With Multi-Information Integration (Here we use 200 DDIM sampling steps for better demonstration. Usually 10 timesteps will be enough for good generation.) Figure 6 displays the integration results of correct geological priors. 
 
 <p align="center">
-  <img src="./datasets_geo_reg_0.5_even_label_page_1.png" alt="Figure 7a" style="width:30%; margin: 5px;">
-  <img src="./datasets_geo_reg_0_even_samples_page_1.png" alt="Figure 7b" style="width:30%; margin: 5px;">
+  <img src="./github_images/datasets_geo_reg_0.5_even_label_page_1.png" alt="Figure 7a" style="width:30%; margin: 5px;">
+  <img src="./github_images/datasets_geo_reg_0_even_samples_page_1.png" alt="Figure 7b" style="width:30%; margin: 5px;">
 </p>
 
 
 
 <p align="center">
-  <img src="./datasets_geo_reg_0.5_even_samples_page_1.png" alt="Figure 7c" style="width:30%; margin: 5px;">
-  <img src="./datasets_geo_reg_1_even_samples_page_1.png" alt="Figure 7d" style="width:30%; margin: 5px;">
+  <img src="./github_images/datasets_geo_reg_0.5_even_samples_page_1.png" alt="Figure 7c" style="width:30%; margin: 5px;">
+  <img src="./github_images/datasets_geo_reg_1_even_samples_page_1.png" alt="Figure 7d" style="width:30%; margin: 5px;">
 </p>
 <p align="justify">
-  <em>Figure 7 Demonstration of corrected geological priors. Top Left: Ground Truth from Flatfault-b datasets. Top Right: Estimated results using only seismic GDM pre-trained on CurveFault-b datasets. Bottom Left: Integration of seismic data and prior geological information. Bottom  Right: Estimated results using only geology-oriented GDM pre-trained on Flatfault-b datasets</em>
+  <em>Figure 6 Demonstration of corrected geological priors. Top Left: Ground Truth from Flatfault-b datasets. Top Right: Estimated results using only seismic GDM pre-trained on CurveFault-b datasets. Bottom Left: Integration of seismic data and prior geological information. Bottom  Right: Estimated results using only geology-oriented GDM pre-trained on Flatfault-b datasets</em>
 </p>
 
 

@@ -5,7 +5,7 @@
   <img src="./github_images/Multiple%20information.png" alt="Overview" title="An Overview of DiffusionVel" style="width:100%; border: 1px solid #ccc; padding: 5px;"/>
 </p>
 <p align="center">
-  <em>Figure 1: An Overview of DiffusionVel.</em>
+  <em style="font-size: smaller;">Figure 1: An Overview of DiffusionVel.</em>
 </p>
 
 
@@ -61,13 +61,13 @@ Install the project's dependencies using the following command:
   <img src="./github_images/datasets_examples_vel.png" alt="Overview" title="OpenFWI Datasets" style="width:80%; border: 1px solid #ccc; padding: 5px;"/>
 </p>
 <p align="center">
-  <em>Figure 2: Examples of velocity models in OpenFWI datasets .</em>
+  <em style="font-size: smaller;">Figure 2: Examples of velocity models in OpenFWI datasets .</em>
 </p>
 <p align="center">
   <img src="./github_images/datasets_examples_data_page_1.png" alt="Overview" title="OpenFWI Datasets" style="width:80%; border: 1px solid #ccc; padding: 5px;"/>
 </p>
 <p align="center">
-  <em>Figure 3: Examples of seismic data in OpenFWI datasets .</em>
+  <em style="font-size: smaller;">Figure 3: Examples of seismic data in OpenFWI datasets.</em>
 </p>
 
 
@@ -117,14 +117,14 @@ If you have downloaded the checkpoints, ensure they are placed in the appropriat
   <img src="./github_images/datasets_part1_replot_page_1.png" alt="Overview" title="" style="width:60%; border: 1px solid #ccc; padding: 5px;"/>
 </p>
 <p align="center">
-  <em>Figure 4: Inversion resutls of DiffusionVel using only seismic data, with comparasion with exsisting methods.</em>
+    <em style="font-size: smaller;">Figure 4: Inversion resutls of DiffusionVel using only seismic data, with comparasion with exsisting methods.</em>
 </p>
 Figure 4 shows the inversion results of DiffusionVel using only seismic data, compared with existing methods: Conventional FWI, InversionNet, and VelocityGAN.
 <p align="center">
   <img src="./github_images/comparison_with_residuals.gif" alt="Overview" title="Generation Process of DiffusionVel With Multi-Information Integration" style="width:100%; border: 1px solid #ccc; padding: 5px;"/>
 </p>
 <p align="justify">
-  <em>Figure 5: Generation Process (predicted x_0) of DiffusionVel With Multi-Information Integration of Seismic Data, Well Logs and Background Velocity.</em>
+    <em style="font-size: smaller;">Figure 5: Generation Process (predicted x_0) of DiffusionVel With Multi-Information Integration of Seismic Data, Well Logs and Background Velocity.</em>
 </p>
 Figure 5 shows the generation process of DiffusionVel With Multi-Information Integration (Here we use 200 DDIM sampling steps for better demonstration. Usually 10 timesteps will be enough for good generation.) Figure 6 displays the integration results of correct geological priors. 
 
@@ -140,7 +140,7 @@ Figure 5 shows the generation process of DiffusionVel With Multi-Information Int
   <img src="./github_images/datasets_geo_reg_1_even_samples_page_1.png" alt="Figure 7d" style="width:30%; margin: 5px;">
 </p>
 <p align="justify">
-  <em>Figure 6 Demonstration of corrected geological priors. Top Left: Ground Truth from Flatfault-b datasets. Top Right: Estimated results using only seismic GDM pre-trained on CurveFault-b datasets. Bottom Left: Integration of seismic data and prior geological information. Bottom  Right: Estimated results using only geology-oriented GDM pre-trained on Flatfault-b datasets</em>
+    <em style="font-size: smaller;">Figure 6 Demonstration of corrected geological priors. Top Left: Ground Truth from Flatfault-b datasets. Top Right: Estimated results using only seismic GDM pre-trained on CurveFault-b datasets. Bottom Left: Integration of seismic data and prior geological information. Bottom  Right: Estimated results using only geology-oriented GDM pre-trained on Flatfault-b datasets</em>
 </p>
 
 

@@ -26,7 +26,7 @@
 
 At its core, DiffusionVel constructs a novel conditional score function, leveraging original score functions within diffusion models to incorporate diverse inputs, including seismic data, well logs, background velocity models, and geological insights. This synergy ensures precise and trustworthy inversion results.
 
-For a detailed explanation, please refer to our article at [insert link]. Our work highlights the exceptional potential of diffusion models in geophysical inversions, particularly within data-driven contexts. We sincerely hope this research inspires further exploration and application of diffusion models in geophysics
+For a detailed explanation, please refer to our article at [DiffusionVel](https://arxiv.org/abs/2410.21776). Our work highlights the exceptional potential of diffusion models in geophysical inversions, particularly within data-driven contexts. We sincerely hope this research inspires further exploration and application of diffusion models in geophysics
 
 Our project is built upon the **Stable Diffusion Project** and the **PyTorch Lightning** framework. PyTorch Lightning is user-friendly and provides excellent support for utilizing multiple GPUs and other advanced features.  Additionally, we incorporate code from **OpenFWI** to efficiently load datasets. We sincerely express our gratitude and tribute to these projects for their contributions to the community.
 

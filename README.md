@@ -15,8 +15,8 @@
 1. [Introduction](#introduction)
 2. [Preparation](#preparation)
 3. [Usage](#usage)
-4. [Results](#result)
-6. [Acknowledgement](#acknowledgement)
+4. [Results](#results)
+6. [Citation](#citation)
 
 
 ---
@@ -145,7 +145,14 @@ Figure 5 shows the generation process of DiffusionVel With Multi-Information Int
 
 
 
-## **Acknowledgments**
-- **Dataset:** [Link or source]
-- **Inspiration:** [Inspirational projects or papers]
-- **Tools:** [Frameworks or libraries used]
+## **Citation**
+If you find our paper or project useful, please consider citing our work:
+```bibtex
+@article{zhang2024diffusionvel,
+  title={DiffusionVel: Multi-information integrated velocity inversion using generative diffusion models},
+  author={Zhang, Hao and Li, Yuanyuan and Huang, Jianping},
+  journal={arXiv preprint arXiv:2410.21776},
+  year={2024}
+}
+```
+
